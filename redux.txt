@@ -1,0 +1,49 @@
+Es una librería muy pequeña (apenas 2Kb de tamaño) con muy pocos métodos que implementa
+el patrón Flux con algunas modificaciones que la hacen más sencilla de manejar. Es
+agnóstica al framework o librería que utilices para tus desarrollos, ya que es únicamente
+JavaScript por lo que puedes utilizarla junto a Angular, con Polymer y con React.
+
+Flux es una arquitectura que facilita la gestión y flujo de datos de una aplicación web. 
+Propone que el camino de los datos tenga un único sentido y que exista una única fuente
+de verdad. De este modo todo el flujo acaba llegando a un sitio que almacena el estado
+y que se encarga de actualizar las vistas que están suscritas a los cambios que en este
+tienen lugar.
+El patrón FLUX sigue el siguiente recorrido:
+
+- La vista, mediante un evento envía una acción con la intención de realizar un cambio
+  en el estado.
+- La acción contiene el tipo y los datos (si los hubiere) y es enviada al dispatcher.
+- El dispatcher propaga la acción al Store y se procesa en orden de llegada.
+- El Store recibe la acción y dependiendo del tipo recibido, actualiza el estado y
+  notifica a las vistas de ese cambio.
+- La vista recibe la notificación y se actualiza con los cambios.
+
+Redux es una librería muy pequeña que se puede incorporar en cualquier proyecto construido
+en JavaScript y se basa en tres principios:
+
+Única fuente de la verdad:
+Nuestra aplicación solo debe de tener un único Store y es la única fuente de información.
+
+El estado es de solo lectura:
+La única forma de modificar el estado es emitiendo un acción, este objeto describe lo que
+va a ocurrir.
+
+Los cambios se realizan con funciones puras:
+Para realizar cambios al estado es necesario utilizar Reducers los cuales son funciones
+puras que toman el estado anterior, una acción y devuelve un nuevo estado con las
+modificaciones necesarias.
+
+
+--- INSTALACIÓN DE REDUX ---
+npm install redux react-redux
+Se crean las carpetas actions y reducers para poder implementar redux en el proyecto
+Se encapsula la información dentro de un provider (ver index.js raíz).
+
+REDUX DEVTOOLS
+Redux provee una herrmienta para visualizar el flujo de datos por medio
+de esta herramienta llamanda "Redux DevTools", la cual se debe instalar
+desde el navegador de chrome. Luego de instalada la extensión en el browser,
+se debe conectar la aplicación a la extensión por medio de "compose" que se
+debe importar al archivo index.jsx principal del proyecto y modificarlo 
+para que este conecte correctamente a la herramienta escribiendo una breve
+función "composeEnhancers".
